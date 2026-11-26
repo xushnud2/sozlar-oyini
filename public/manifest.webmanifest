@@ -1,0 +1,20 @@
+{
+  "name": "So‘z o‘yini",
+  "short_name": "So‘z",
+  "description": "Guruhlar, ishoralar va so‘zlar — ko‘p o‘yinchi o‘yin.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f4ef",
+  "theme_color": "#4f46e5",
+  "lang": "uz",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
