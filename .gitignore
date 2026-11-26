@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.log
+data/
+dict.txt
+freq.txt
+freq-all.txt
+word.xml
+imlo-words.csv
