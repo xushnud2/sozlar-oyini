@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f4ef" />
+  <title>So‘z o‘yini</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand"><span class="logo"><img src="/brain.svg" alt="" /></span><h1>So‘z o‘yini</h1></div>
+      <div class="topbar-actions">
+        <div id="roomPill" class="room-pill hidden"><strong id="codeText">-----</strong><button id="copyBtn" class="icon-btn" title="Havola">⧉</button></div>
+        <button id="themeBtn" class="icon-btn toggle-btn" title="Tema">🌙</button>
+      </div>
+    </header>
+
+    <section id="joinScreen" class="screen active">
+      <div class="join-wrap">
+        <div class="card join-card">
+          <h2>Qo‘shilish</h2>
+          <div class="join-grid">
+            <div class="join-block">
+              <h3>Yangi xona</h3>
+              <label>Ism<input id="newName" maxlength="20" placeholder="Ismingiz" autocomplete="off" /></label>
+              <label>Guruhlar<select id="teamCount"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
+              <button id="createBtn" class="btn primary wide">Yaratish</button>
+            </div>
+            <div class="join-sep"></div>
+            <div class="join-block">
+              <h3>Kod bilan</h3>
+              <label>Kod<input id="joinCode" maxlength="5" placeholder="ABC23" autocomplete="off" style="text-transform:uppercase" /></label>
+              <label>Ism<input id="joinName" maxlength="20" placeholder="Ismingiz" autocomplete="off" /></label>
+              <button id="joinBtn" class="btn wide">Qo‘shilish</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="selectingScreen" class="screen">
+      <div class="selecting-wrap">
+        <div class="card selecting-card">
+          <div class="dice-row"><span>🎲</span><span>🎲</span></div>
+          <h2>O‘yinchilar tanlanmoqda…</h2>
+        </div>
+      </div>
+    </section>
+
+    <section id="lobbyScreen" class="screen">
+      <main class="card lobby-main">
+        <div class="lobby-head">
+          <h2 id="playerCount"></h2>
+          <div class="host-controls" id="hostControls">
+            <button id="addTeamBtn" class="btn small" data-action="add-team">+</button>
+            <button id="removeTeamBtn" class="btn small ghost" data-action="remove-team">−</button>
+            <button id="startBtn" class="btn primary" data-action="start-game">Boshlash →</button>
+          </div>
+        </div>
+        <div id="teamList" class="team-list"></div>
+      </main>
+    </section>
+
+    <section id="selectionScreen" class="screen">
+      <div class="selection-wrap">
+        <main class="card selection-card">
+          <div class="selection-head"><h2>10 ta so‘z</h2><span id="pickCounter">0/10</span></div>
+          <div id="pickBoard" class="board pick-board"></div>
+          <div id="pickWaiting" class="waiting hidden">Guruh boshliqlari so‘zlarni tanlab bo‘lishi bilan o‘yin boshlanadi</div>
+          <div id="pickChat" class="chat-box pick-chat hidden">
+            <div class="chat-title">Guruh chat</div>
+            <div class="chat-list" data-chat-list aria-live="polite"></div>
+            <div class="chat-form"><input data-chat-input maxlength="120" placeholder="Xabar" autocomplete="off" /><button class="btn ghost small" data-action="send-chat" title="Yuborish">›</button></div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-top">
+        <div id="turnBadge" class="turn-badge"></div>
+        <div id="clueBox" class="clue-box"></div>
+        <div id="guessLeft" class="guess-left"></div>
+      </div>
+      <div class="game-layout">
+        <main class="card board-card">
+          <div id="board" class="board"></div>
+        </main>
+        <aside class="card side-card">
+          <div id="scoreList" class="score-list"></div>
+          <div class="chat-box game-chat">
+            <div class="chat-title">Guruh chat</div>
+            <div class="chat-list" data-chat-list aria-live="polite"></div>
+            <div class="chat-form"><input data-chat-input maxlength="120" placeholder="Xabar" autocomplete="off" /><button class="btn ghost small" data-action="send-chat" title="Yuborish">›</button></div>
+          </div>
+          <div id="logList" class="log-list"></div>
+          <div class="side-actions">
+            <button id="endTurnBtn" class="btn ghost wide hidden" data-action="end-turn">Navbat</button>
+            <button id="leaveBtn" class="btn ghost wide" data-action="leave">Chiqish</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div id="winnerModal" class="modal-backdrop hidden">
+      <div class="card modal">
+        <div class="trophy">🏆</div>
+        <h2 id="winnerTitle"></h2>
+        <div id="winnerStats" class="winner-stats hidden"></div>
+        <button id="restartBtn" class="btn primary wide" data-action="restart">Yana o‘ynash</button>
+        <button id="newGameBtn" class="btn ghost wide" data-action="new-game">Yangi o‘yin</button>
+      </div>
+    </div>
+
+    <div id="toastWrap" class="toast-wrap"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
