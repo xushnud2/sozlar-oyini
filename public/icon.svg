@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="So‘z o‘yini">
+  <rect width="512" height="512" rx="112" fill="#eef0ff"/>
+  <circle cx="256" cy="242" r="150" fill="#fffdf8" stroke="#4f46e5" stroke-width="18"/>
+  <circle cx="256" cy="242" r="94" fill="none" stroke="#0f766e" stroke-width="14" stroke-dasharray="28 20"/>
+  <circle cx="256" cy="242" r="34" fill="#4f46e5"/>
+  <rect x="150" y="404" width="212" height="18" rx="9" fill="#c08a18"/>
+  <rect x="190" y="438" width="132" height="14" rx="7" fill="#c08a18" opacity="0.55"/>
+</svg>
